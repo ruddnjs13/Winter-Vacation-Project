@@ -1,7 +1,7 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "InputReaderSO", menuName = "Scriptable Objects/InputReaderSO")]
+[CreateAssetMenu(fileName = "InputReader", menuName = "SO/InputReader")]
 public class InputReaderSO : ScriptableObject
 {
-    
+    //private Controls
 }
