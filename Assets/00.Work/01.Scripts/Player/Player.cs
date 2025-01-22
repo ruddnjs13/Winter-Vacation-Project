@@ -19,6 +19,11 @@ public class Player : MonoBehaviour
         _inputReaderSO.JumpKeyPressed += HandleJumpKeyPress;
     }
 
+    private void OnDestroy()
+    {
+        _inputReaderSO.JumpKeyPressed -= HandleJumpKeyPress;
+    }
+
     private void HandleJumpKeyPress()
     {
         MoveCompo.Jump();

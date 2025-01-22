@@ -18,7 +18,7 @@ namespace _00.Work._01.Scripts.Player
 
         public void SetMovement(Vector2 movement)
         {
-            MovementDirection = new Vector3(movement.x, _rigidbody.linearVelocity.y, movement.y);
+            MovementDirection = new Vector3(movement.x * moveSpeed, _rigidbody.linearVelocity.y, movement.y * moveSpeed);
         }
 
         public void Jump()
@@ -29,7 +29,8 @@ namespace _00.Work._01.Scripts.Player
 
         private void FixedUpdate()
         {
-            _rigidbody.linearVelocity = MovementDirection * moveSpeed;
+            _rigidbody.linearVelocity = MovementDirection;
+            
         }
     }
 }
