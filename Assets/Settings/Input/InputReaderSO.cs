@@ -9,7 +9,7 @@ public class InputReaderSO : ScriptableObject, Controls.IPlayerActions
     
     private Controls _controls;
 
-    public Vector3 InputDirection {get; private set;}
+    public Vector2 InputDirection {get; private set;}
 
     private void OnEnable()
     {
@@ -21,9 +21,14 @@ public class InputReaderSO : ScriptableObject, Controls.IPlayerActions
         _controls.Enable();
     }
 
+    private void OnDisable()
+    {
+        _controls.Disable();
+    }
+
     public void OnMove(InputAction.CallbackContext context)
     {
-        InputDirection = context.ReadValue<Vector3>();
+        InputDirection = context.ReadValue<Vector2>().normalized;
     }
 
     public void OnJump(InputAction.CallbackContext context)
