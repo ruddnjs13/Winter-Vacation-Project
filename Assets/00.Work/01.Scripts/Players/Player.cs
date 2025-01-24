@@ -1,18 +1,13 @@
 using System;
+using _00.Work._01.Scripts.Entities;
 using _00.Work._01.Scripts.Player;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : Entity
 {
     [SerializeField] private InputReaderSO _inputReaderSO;
 
-    public PlayerMove MoveCompo { get; private set; }
-
-
-    private void Awake()
-    {
-        MoveCompo = GetComponent<PlayerMove>();
-    }
+   
 
     private void OnEnable()
     {
@@ -26,11 +21,9 @@ public class Player : MonoBehaviour
 
     private void HandleJumpKeyPress()
     {
-        MoveCompo.Jump();
     }
 
     private void Update()
     {
-        MoveCompo.SetMovement(_inputReaderSO.InputDirection);
     }
 }
