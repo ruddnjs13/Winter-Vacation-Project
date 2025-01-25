@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Video;
 
 namespace _00.Work._01.Scripts.Entities
 {
@@ -9,7 +10,7 @@ namespace _00.Work._01.Scripts.Entities
     {
         protected Dictionary<Type, IEntityComponent> _components = new Dictionary<Type, IEntityComponent>();
 
-        private void Awake()
+        protected virtual void Awake()
         {
             AddComponentToDictionary();
             ComponentInitialize();
@@ -21,7 +22,7 @@ namespace _00.Work._01.Scripts.Entities
             _components.Values.OfType<IAfterInit>().ToList().ForEach(compo => compo.AfterInit());
         }
 
-        private void ComponentInitialize()
+        protected virtual void ComponentInitialize()
         {
             _components.Values.ToList().ForEach(component => component.Initialize(this));
         }

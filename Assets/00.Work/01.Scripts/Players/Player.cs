@@ -7,23 +7,32 @@ public class Player : Entity
 {
     [SerializeField] private InputReaderSO _inputReaderSO;
 
-   
+    [SerializeField] private StateListSO playerFSM;
+    
+    private StateMachine _stateMachine;
 
-    private void OnEnable()
+    protected override void Awake()
     {
-        _inputReaderSO.JumpKeyPressed += HandleJumpKeyPress;
+        base.Awake();
+        _stateMachine = new StateMachine(this, playerFSM);
+        ComponentInitialize();
     }
 
-    private void OnDestroy()
+    private void Start()
     {
-        _inputReaderSO.JumpKeyPressed -= HandleJumpKeyPress;
+        ChangeState("IDLE");
     }
 
-    private void HandleJumpKeyPress()
+    protected override void ComponentInitialize()
     {
+        base.ComponentInitialize();
     }
+
 
     private void Update()
     {
+        _stateMachine.UpdateStateMachine();
     }
+    
+    public void ChangeState(string stateName) => _stateMachine.ChangeState(stateName);
 }
