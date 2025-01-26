@@ -14,30 +14,30 @@ namespace _00.Work._01.Scripts.Entities
         
         private Entity _entity;
         
-        private Rigidbody rbCompo;
+        public Rigidbody RbCompo {get; private set;}
         
         public Vector3 Movement { get; private set; }
         
         public void Initialize(Entity entity)
         {
             _entity = entity;
-            rbCompo = _entity.GetComponent<Rigidbody>();
+            RbCompo = _entity.GetComponent<Rigidbody>();
         }
 
         private void FixedUpdate()
         {
-            rbCompo.linearVelocity = Movement;
+            RbCompo.linearVelocity = Movement;
         }
 
         public void SetMovement(Vector2 movement)
         {
             Movement = new Vector3(movement.x * moveSpeed
-                , rbCompo.linearVelocity.y, movement.y * moveSpeed);
+                , RbCompo.linearVelocity.y, movement.y * moveSpeed);
         }
 
         public void StopImmediately()
         {
-            
+            RbCompo.linearVelocity = Vector3.zero;
         }
 
         public bool isGroundDetect()
@@ -45,5 +45,13 @@ namespace _00.Work._01.Scripts.Entities
             return Physics.BoxCast(transform.position,boxHalfSize,Vector3.down,
                 Quaternion.identity,boxHeight,whatIsGround);
         }
+
+#if UNITY_EDITOR
+        private void OnDrawGizmos()
+        {
+            Gizmos.DrawWireCube(transform.position,boxHalfSize);
+        }
+#endif
     }
+    
 }

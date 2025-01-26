@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace _00.Work._01.Scripts.Entities
 {
-    public class StateMachine : MonoBehaviour
+    public class StateMachine
     {
         public EntityState CurrentState { get; private set; }
 
