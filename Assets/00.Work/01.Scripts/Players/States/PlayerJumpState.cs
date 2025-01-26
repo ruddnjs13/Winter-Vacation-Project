@@ -24,8 +24,8 @@ namespace _00.Work._01.Scripts.Player.States
         public override void Update()
         {
             base.Update();
-            if (_mover.isGroundDetect())
-                _player.ChangeState("IDLE");
+            //if (_mover.isGroundDetect())
+                //_player.ChangeState("IDLE");
         }
     }
 }

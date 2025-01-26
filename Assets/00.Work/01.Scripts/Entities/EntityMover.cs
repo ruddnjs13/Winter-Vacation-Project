@@ -9,6 +9,7 @@ namespace _00.Work._01.Scripts.Entities
         [SerializeField] private float moveSpeed = 5f;
         [SerializeField] private float jumpPower = 7f;
         [SerializeField] private Vector3 boxHalfSize;
+        [SerializeField] private Transform boxTrm;
         [SerializeField] private float boxHeight = 0.5f;
         [SerializeField] private LayerMask whatIsGround;
         
@@ -42,14 +43,16 @@ namespace _00.Work._01.Scripts.Entities
 
         public bool isGroundDetect()
         {
-            return Physics.BoxCast(transform.position,boxHalfSize,Vector3.down,
-                Quaternion.identity,boxHeight,whatIsGround);
+            return Physics.BoxCast(boxTrm.position, boxHalfSize, Vector3.down,
+                Quaternion.identity, boxHeight, whatIsGround) != null;
         }
 
 #if UNITY_EDITOR
         private void OnDrawGizmos()
         {
-            Gizmos.DrawWireCube(transform.position,boxHalfSize);
+            Gizmos.color = Color.blue;
+            Gizmos.DrawWireCube(boxTrm.position + new Vector3(0,-boxHeight,0),boxHalfSize * 2);
+            Gizmos.DrawRay(boxTrm.position ,Vector3.down * boxHeight);
         }
 #endif
     }
