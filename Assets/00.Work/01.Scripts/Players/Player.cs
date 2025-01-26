@@ -1,4 +1,5 @@
 using _00.Work._01.Scripts.Entities;
+using Code.Animators;
 using UnityEngine;
 
 namespace _00.Work._01.Scripts.Players
@@ -8,6 +9,7 @@ namespace _00.Work._01.Scripts.Players
         [field:SerializeField] public InputReaderSO PlayerInput { get; private set; }
 
         [SerializeField] private StateListSO playerFSM;
+        [field:SerializeField] public AnimParamSO Y_VELOCITYParam;
     
         private StateMachine _stateMachine;
 

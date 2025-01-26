@@ -30,7 +30,6 @@ namespace _00.Work._01.Scripts.Player.States
 
         private void HandleJumpKeyPressed()
         {
-            Debug.Log(_mover.isGroundDetect());
             if (_mover.isGroundDetect())
                 _player.ChangeState("JUMP");
         }

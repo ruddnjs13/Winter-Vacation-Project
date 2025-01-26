@@ -20,8 +20,8 @@ namespace _00.Work._01.Scripts.Player.States
 
         public override void Update()
         {
-            Vector2 movement = _player.PlayerInput.InputDirection;
             base.Update();
+            Vector2 movement = _player.PlayerInput.InputDirection;
             _mover.SetMovement(Vector2.zero);
             if(Mathf.Abs(movement.x) >0 || Mathf.Abs(movement.y) > 0)
                 _player.ChangeState("MOVE");

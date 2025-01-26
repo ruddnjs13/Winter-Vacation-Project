@@ -1,17 +1,18 @@
 using System;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace _00.Work._01.Scripts.Entities
 {
     public class EntityMover : MonoBehaviour, IEntityComponent
     {
         [SerializeField] private float moveSpeed = 5f;
-        [SerializeField] private float jumpPower = 7f;
-        [SerializeField] private Vector3 boxHalfSize;
-        [SerializeField] private Transform boxTrm;
-        [SerializeField] private float boxHeight = 0.5f;
+        [SerializeField] private Vector3 boxSize;
+        [SerializeField] private Transform checkerTrm;
+        [SerializeField] private float maxDistance;
         [SerializeField] private LayerMask whatIsGround;
+        
         
         private Entity _entity;
         
@@ -43,16 +44,21 @@ namespace _00.Work._01.Scripts.Entities
 
         public bool isGroundDetect()
         {
-            return Physics.BoxCast(boxTrm.position, boxHalfSize, Vector3.down,
-                Quaternion.identity, boxHeight, whatIsGround) != null;
+            if (Physics.BoxCast(checkerTrm.position, boxSize / 2f, Vector3.down,
+                    Quaternion.identity, maxDistance, whatIsGround))
+            {
+                
+                return true;
+            }
+            return false;
         }
 
 #if UNITY_EDITOR
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.blue;
-            Gizmos.DrawWireCube(boxTrm.position + new Vector3(0,-boxHeight,0),boxHalfSize * 2);
-            Gizmos.DrawRay(boxTrm.position ,Vector3.down * boxHeight);
+            Gizmos.DrawRay(checkerTrm.position, Vector3.down * maxDistance);
+            Gizmos.DrawWireCube(checkerTrm.position + Vector3.down * maxDistance, boxSize);
         }
 #endif
     }

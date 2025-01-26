@@ -14,6 +14,8 @@ namespace _00.Work._01.Scripts.Entities
             _entity = entity;
             _animator = GetComponent<Animator>();
         }
+        
+        
 
         public void SetParam(AnimParamSO animParam) => _animator.SetTrigger(animParam.hashValue);
         public void SetParam(AnimParamSO animParam, int value) => _animator.SetInteger(animParam.hashValue, value);
