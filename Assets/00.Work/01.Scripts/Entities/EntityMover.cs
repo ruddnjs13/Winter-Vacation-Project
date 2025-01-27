@@ -47,7 +47,6 @@ namespace _00.Work._01.Scripts.Entities
             if (Physics.BoxCast(checkerTrm.position, boxSize / 2f, Vector3.down,
                     Quaternion.identity, maxDistance, whatIsGround))
             {
-                
                 return true;
             }
             return false;
