@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Code.Animators
+namespace Animations
 {
     [CreateAssetMenu(fileName = "ParamSO", menuName = "SO/Animator/Param", order = 0)]
     public class AnimParamSO : ScriptableObject

@@ -1,10 +1,9 @@
-using System.Numerics;
-using _00.Work._01.Scripts.Entities;
-using Code.Animators;
+using Animations;
+using Entities;
 using UnityEngine;
 using Vector2 = UnityEngine.Vector2;
 
-namespace _00.Work._01.Scripts.Player.States
+namespace Players.States
 {
     public class PlayerIdleState : PlayerGroundState
     {

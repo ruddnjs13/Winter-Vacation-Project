@@ -1,18 +1,18 @@
-using _00.Work._01.Scripts.Entities;
-using Code.Animators;
+using Animations;
+using Entities;
 using UnityEngine;
 
-namespace _00.Work._01.Scripts.Player.States
+namespace Players.States
 {
     public class PlayerJumpState : EntityState
     {
-        private Players.Player _player;
+        private Player _player;
         private EntityMover _mover;
         private EntityRenderer _renderer;
         
         public PlayerJumpState(Entity entity, AnimParamSO animParam) : base(entity, animParam)
         {
-            _player = entity as Players.Player;
+            _player = entity as Player;
             _mover = entity.GetCompo<EntityMover>();
         }
 

@@ -1,9 +1,6 @@
-using System;
-using Unity.Mathematics;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace _00.Work._01.Scripts.Entities
+namespace Entities
 {
     public class EntityMover : MonoBehaviour, IEntityComponent
     {
@@ -13,6 +10,7 @@ namespace _00.Work._01.Scripts.Entities
         [SerializeField] private float maxDistance;
         [SerializeField] private LayerMask whatIsGround;
         
+        private CharacterController _characterController;
         
         private Entity _entity;
         
@@ -23,6 +21,7 @@ namespace _00.Work._01.Scripts.Entities
         public void Initialize(Entity entity)
         {
             _entity = entity;
+            _characterController = GetComponent<CharacterController>();
             RbCompo = _entity.GetComponent<Rigidbody>();
         }
 

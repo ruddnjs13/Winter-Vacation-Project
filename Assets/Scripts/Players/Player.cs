@@ -1,8 +1,8 @@
-using _00.Work._01.Scripts.Entities;
-using Code.Animators;
+using Animations;
+using Entities;
 using UnityEngine;
 
-namespace _00.Work._01.Scripts.Players
+namespace Players
 {
     public class Player : Entity
     {

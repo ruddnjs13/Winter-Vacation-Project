@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace _00.Work._01.Scripts.Entities
+namespace Entities
 {
     public class StateMachine
     {

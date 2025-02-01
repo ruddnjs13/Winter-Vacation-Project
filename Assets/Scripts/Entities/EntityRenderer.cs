@@ -1,7 +1,7 @@
-using Code.Animators;
+using Animations;
 using UnityEngine;
 
-namespace _00.Work._01.Scripts.Entities
+namespace Entities
 {
     public class EntityRenderer : MonoBehaviour, IEntityComponent
     {

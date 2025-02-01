@@ -1,7 +1,7 @@
-using _00.Work._01.Scripts.Entities;
-using Code.Animators;
+using Animations;
+using Entities;
 
-namespace _00.Work._01.Scripts.Player.States
+namespace Players.States
 {
     public class PlayerJumpLoopState : EntityState
     {

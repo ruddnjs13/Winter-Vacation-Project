@@ -1,18 +1,17 @@
-using _00.Work._01.Scripts.Entities;
-using Code.Animators;
-using UnityEngine;
+using Animations;
+using Entities;
 
-namespace _00.Work._01.Scripts.Player.States
+namespace Players.States
 {
     
     public class PlayerGroundState : EntityState
     {
-        protected Players.Player _player;
+        protected Player _player;
         protected EntityMover _mover;
         
         public PlayerGroundState(Entity entity, AnimParamSO animParam) : base(entity, animParam)
         {
-            _player = entity as Players.Player;
+            _player = entity as Player;
             _mover = entity.GetCompo<EntityMover>();
         }
 
