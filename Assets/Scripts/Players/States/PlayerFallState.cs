@@ -31,7 +31,7 @@ namespace Players.States
             _mover.SetMovement(movement);
 
 
-            if (_mover.isGroundDetect())
+            if (_mover.IsGroundDetect())
                 _player.ChangeState("IDLE");
         }
 

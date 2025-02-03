@@ -29,7 +29,7 @@ namespace Players.States
 
         private void HandleJumpKeyPressed()
         {
-            if (_mover.isGroundDetect())
+            if (_mover.IsGroundDetect())
                 _player.ChangeState("JUMP");
         }
     }

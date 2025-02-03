@@ -21,7 +21,6 @@ namespace Players.States
         {
             base.Update();
             Vector2 movement = _player.PlayerInput.InputDirection;
-            _mover.SetMovement(Vector2.zero);
             if(Mathf.Abs(movement.x) >0 || Mathf.Abs(movement.y) > 0)
                 _player.ChangeState("MOVE");
         }

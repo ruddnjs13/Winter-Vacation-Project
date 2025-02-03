@@ -4,7 +4,11 @@ namespace Entities
 {
     public class EntityMover : MonoBehaviour, IEntityComponent
     {
+        [Header("Movement Setting")]
         [SerializeField] private float moveSpeed = 5f;
+        [SerializeField] private float rotationSpeed = 5f;
+        
+        [Header("GroundCheck Setting")]
         [SerializeField] private Vector3 boxSize;
         [SerializeField] private Transform checkerTrm;
         [SerializeField] private float maxDistance;
@@ -25,13 +29,19 @@ namespace Entities
 
         private void FixedUpdate()
         {
-            RbCompo.linearVelocity = Movement;
+            MoveCharacter();
+            RotateCharacter();
+        }
+
+        private void MoveCharacter()
+        {
+            RbCompo.MovePosition(transform.position + Movement * (moveSpeed * Time.deltaTime));
         }
 
         public void SetMovement(Vector2 movement)
         {
-            Movement = new Vector3(movement.x * moveSpeed
-                , RbCompo.linearVelocity.y, movement.y * moveSpeed);
+            Movement = new Vector3(movement.x 
+                , 0, movement.y);
         }
 
         public void StopImmediately()
@@ -39,7 +49,7 @@ namespace Entities
             RbCompo.linearVelocity = Vector3.zero;
         }
 
-        public bool isGroundDetect()
+        public bool IsGroundDetect()
         {
             if (Physics.BoxCast(checkerTrm.position, boxSize / 2f, Vector3.down,
                     Quaternion.identity, maxDistance, whatIsGround))
@@ -47,6 +57,12 @@ namespace Entities
                 return true;
             }
             return false;
+        }
+
+        public void RotateCharacter()
+        {
+            transform.rotation = Quaternion.Lerp(transform.rotation
+                , Quaternion.LookRotation(Movement), rotationSpeed * Time.deltaTime);
         }
 
 #if UNITY_EDITOR
