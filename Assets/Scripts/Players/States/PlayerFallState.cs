@@ -15,6 +15,7 @@ namespace Players.States
             _player = entity as Player;
             _mover = entity.GetCompo<EntityMover>();
             _renderer = entity.GetCompo<EntityRenderer>();
+            
         }
 
         public override void Enter()
@@ -28,6 +29,7 @@ namespace Players.States
             base.Update();
             Vector2 movement = _player.PlayerInput.InputDirection;
             _mover.SetMovement(movement);
+
 
             if (_mover.isGroundDetect())
                 _player.ChangeState("IDLE");

@@ -10,7 +10,6 @@ namespace Entities
         [SerializeField] private float maxDistance;
         [SerializeField] private LayerMask whatIsGround;
         
-        private CharacterController _characterController;
         
         private Entity _entity;
         
@@ -21,7 +20,6 @@ namespace Entities
         public void Initialize(Entity entity)
         {
             _entity = entity;
-            _characterController = GetComponent<CharacterController>();
             RbCompo = _entity.GetComponent<Rigidbody>();
         }
 

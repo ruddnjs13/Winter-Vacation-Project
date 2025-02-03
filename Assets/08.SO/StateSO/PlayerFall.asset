@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: PlayerFall
   m_EditorClassIdentifier: 
   stateName: FALL
-  className: _00.Work._01.Scripts.Player.States.PlayerFallState
+  className: Players.States.PlayerFallState
   animParam: {fileID: 11400000, guid: d435a12d7b737a34c8884f056152b308, type: 2}

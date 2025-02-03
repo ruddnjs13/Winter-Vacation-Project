@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: PlayerMove
   m_EditorClassIdentifier: 
   stateName: MOVE
-  className: _00.Work._01.Scripts.Player.States.PlayerMoveState
+  className: Players.States.PlayerMoveState
   animParam: {fileID: 11400000, guid: 5441f34933f2e8341a5fa6f484878c0f, type: 2}

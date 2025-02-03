@@ -29,8 +29,8 @@ namespace Players.States
 
             Vector2 movement = _player.PlayerInput.InputDirection;
             _mover.SetMovement(movement);
-            if (_mover.RbCompo.linearVelocity.y < 1f) 
-                    _player.ChangeState("JUMP_LOOP");
+            if (_mover.RbCompo.linearVelocity.y < 0f) 
+                    _player.ChangeState("FALL");
         }
     }
 }

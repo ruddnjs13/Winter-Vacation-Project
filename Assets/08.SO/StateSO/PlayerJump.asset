@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: PlayerJump
   m_EditorClassIdentifier: 
   stateName: JUMP
-  className: _00.Work._01.Scripts.Player.States.PlayerJumpState
+  className: Players.States.PlayerJumpState
   animParam: {fileID: 11400000, guid: 0a8341bfec5877740863aae6a519d058, type: 2}
