@@ -35,7 +35,8 @@ namespace Entities
 
         private void MoveCharacter()
         {
-            RbCompo.MovePosition(transform.position + Movement * (moveSpeed * Time.deltaTime));
+            RbCompo.MovePosition(transform.position + (new Vector3(Movement.x * transform.forward.x,Movement.y
+                ,Movement.z * transform.forward.z)) *(moveSpeed * Time.deltaTime));
         }
 
         public void SetMovement(Vector2 movement)
