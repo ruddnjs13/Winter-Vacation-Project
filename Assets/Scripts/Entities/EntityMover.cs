@@ -1,9 +1,12 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Entities
 {
     public class EntityMover : MonoBehaviour, IEntityComponent
     {
+        [FormerlySerializedAs("cameraTrm")] [SerializeField] private Camera followCam;
+        
         [Header("Movement Setting")]
         [SerializeField] private float moveSpeed = 5f;
         [SerializeField] private float rotationSpeed = 5f;
@@ -35,14 +38,15 @@ namespace Entities
 
         private void MoveCharacter()
         {
-            RbCompo.MovePosition(transform.position + (new Vector3(Movement.x * transform.forward.x,Movement.y
-                ,Movement.z * transform.forward.z)) *(moveSpeed * Time.deltaTime));
+            RbCompo.MovePosition(transform.position + Movement * moveSpeed* Time.fixedDeltaTime);
         }
 
         public void SetMovement(Vector2 movement)
         {
-            Movement = new Vector3(movement.x 
-                , 0, movement.y);
+            Vector3 forward = followCam.transform.localRotation * Vector3.forward;
+            Vector3 right = Quaternion.Euler(0,90,0) * forward;
+            Vector3 moveDir = forward * movement.y + right * movement.x;
+            Movement =  new Vector3(moveDir.x, 0, moveDir.z);
         }
 
         public void StopImmediately()
@@ -62,6 +66,7 @@ namespace Entities
 
         public void RotateCharacter()
         {
+            if (Movement == Vector3.zero) return;
             transform.rotation = Quaternion.Lerp(transform.rotation
                 , Quaternion.LookRotation(Movement), rotationSpeed * Time.deltaTime);
         }
